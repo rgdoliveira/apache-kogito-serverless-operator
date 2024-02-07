@@ -20,7 +20,7 @@ kind: Kustomization
 images:
 - digest: sha256:24c2e62bff1f2f7e5579b990e44206ac019bd00f5ca546b069471fc1af34ed75
   name: controller
-  newName: registry.redhat.io/openshift-serverless-1-tech-preview/logic-operator-rhel8
+  newName: registry.redhat.io/openshift-serverless-1-tech-preview/logic-rhel8-operator
 # Patching the manager deployment file to add an env var with the operator namespace in
 patchesJson6902:
 - patch: |-
