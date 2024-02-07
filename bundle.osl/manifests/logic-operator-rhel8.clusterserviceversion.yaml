@@ -88,6 +88,19 @@ metadata:
         },
         {
           "apiVersion": "sonataflow.org/v1alpha08",
+          "kind": "SonataFlowClusterPlatform",
+          "metadata": {
+            "name": "sonataflow-clusterplatform"
+          },
+          "spec": {
+            "platformRef": {
+              "name": "sonataflow-platform",
+              "namespace": "sonataflow-operator-system"
+            }
+          }
+        },
+        {
+          "apiVersion": "sonataflow.org/v1alpha08",
           "kind": "SonataFlowPlatform",
           "metadata": {
             "name": "sonataflow-platform"
@@ -157,6 +170,22 @@ spec:
             displayName: InnerBuild
             path: innerBuild
         version: v1alpha08
+      - description: SonataFlowClusterPlatform is the Schema for the sonataflowclusterplatforms API
+        displayName: Sonata Flow Cluster Platform
+        kind: SonataFlowClusterPlatform
+        name: sonataflowclusterplatforms.sonataflow.org
+        specDescriptors:
+          - description: Name of the SonataFlowPlatform
+            displayName: Platform_Name
+            path: platformRef.name
+          - description: Namespace of the SonataFlowPlatform
+            displayName: Platform_NS
+            path: platformRef.namespace
+        statusDescriptors:
+          - description: Version the operator version controlling this ClusterPlatform
+            displayName: version
+            path: version
+        version: v1alpha08
       - description: SonataFlowPlatform is the descriptor for the workflow platform infrastructure.
         displayName: Sonata Flow Platform
         kind: SonataFlowPlatform
@@ -187,6 +216,12 @@ spec:
           - description: DevMode Attributes for running workflows in devmode (immutable, no build required)
             displayName: DevMode
             path: devMode
+          - description: PodTemplate describes the deployment details of this platform service instance.
+            displayName: podTemplate
+            path: services.dataIndex.podTemplate
+          - description: PodTemplate describes the deployment details of this platform service instance.
+            displayName: podTemplate
+            path: services.jobService.podTemplate
         statusDescriptors:
           - description: Cluster what kind of cluster you're running (ie, plain Kubernetes or OpenShift)
             displayName: cluster
@@ -356,6 +391,32 @@ spec:
             - apiGroups:
                 - sonataflow.org
               resources:
+                - sonataflowclusterplatforms
+              verbs:
+                - create
+                - delete
+                - get
+                - list
+                - patch
+                - update
+                - watch
+            - apiGroups:
+                - sonataflow.org
+              resources:
+                - sonataflowclusterplatforms/finalizers
+              verbs:
+                - update
+            - apiGroups:
+                - sonataflow.org
+              resources:
+                - sonataflowclusterplatforms/status
+              verbs:
+                - get
+                - patch
+                - update
+            - apiGroups:
+                - sonataflow.org
+              resources:
                 - sonataflowplatforms
               verbs:
                 - create
@@ -507,6 +568,58 @@ spec:
                 - subjectaccessreviews
               verbs:
                 - create
+            - apiGroups:
+                - apps
+              resources:
+                - statefulset
+                - statefulsets
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - networking.k8s.io
+              resources:
+                - ingress
+                - ingresses
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - serving.knative.dev
+              resources:
+                - service
+                - services
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - eventing.knative.dev
+              resources:
+                - broker
+                - brokers
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - apps.openshift.io
+              resources:
+                - deploymentconfigs
+              verbs:
+                - get
+                - list
+                - watch
+            - apiGroups:
+                - route.openshift.io
+              resources:
+                - routes
+              verbs:
+                - get
+                - list
+                - watch
           serviceAccountName: logic-operator-rhel8-controller-manager
       deployments:
         - label:
@@ -560,7 +673,7 @@ spec:
                         valueFrom:
                           fieldRef:
                             fieldPath: metadata.namespace
-                    image: registry.redhat.io/openshift-serverless-1-tech-preview/logic-operator-rhel8@sha256:24c2e62bff1f2f7e5579b990e44206ac019bd00f5ca546b069471fc1af34ed75
+                    image: registry.redhat.io/openshift-serverless-1-tech-preview/logic-rhel8-operator@sha256:33653cf4c48121a7a0d1e109c3fe93b8050f9deb80b6bb00425b62c77917a9ad
                     livenessProbe:
                       httpGet:
                         path: /healthz
@@ -652,6 +765,6 @@ spec:
   relatedImages:
     - image: registry.redhat.io/openshift4/ose-kube-rbac-proxy@sha256:4564ca3dc5bac80d6faddaf94c817fbbc270698a9399d8a21ee1005d85ceda56
       name: kube-rbac-proxy
-    - image: registry.redhat.io/openshift-serverless-1-tech-preview/logic-operator-rhel8@sha256:24c2e62bff1f2f7e5579b990e44206ac019bd00f5ca546b069471fc1af34ed75
+    - image: registry.redhat.io/openshift-serverless-1-tech-preview/logic-rhel8-operator@sha256:33653cf4c48121a7a0d1e109c3fe93b8050f9deb80b6bb00425b62c77917a9ad
       name: manager
   version: 1.32.0
