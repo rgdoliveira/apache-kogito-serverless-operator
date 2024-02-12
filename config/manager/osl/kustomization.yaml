@@ -18,7 +18,7 @@ configMapGenerator:
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- digest: sha256:8d76f495d7095faf64086725f79df0c8d7edb575e30306ada15057a58bdfead7
+- digest: sha256:1bc0c3a11b5eefff814848bf15fe882454b9abe449abfe0f69e7e19a71b83922
   name: controller
   newName: registry.redhat.io/openshift-serverless-1-tech-preview/logic-rhel8-operator
 # Patching the manager deployment file to add an env var with the operator namespace in
