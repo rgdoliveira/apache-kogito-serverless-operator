@@ -15,7 +15,7 @@
 # specific language governing permissions and limitations
 # under the License.
 
-FROM registry.redhat.io/openshift-serverless-1-tech-preview/logic-rhel8-operator:1.32.0 AS builder
+FROM registry.redhat.io/openshift-serverless-1-tech-preview/logic-swf-builder-rhel8:1.32.0 AS builder
 
 # Kogito User
 USER 1001
