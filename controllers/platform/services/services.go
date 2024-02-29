@@ -105,8 +105,8 @@ func (d DataIndexHandler) GetServiceImageName(persistenceName string) string {
 	if persistenceName == "ephemeral" {
 		return "registry.redhat.io/openshift-serverless-1-tech-preview/logic-data-index-ephemeral-rhel8:" + version.OperatorVersion
 	}
-	// Since we don't have an upstream version so far, use latest nightly
-	var tag = "latest"
+	// Since we don't have an upstream version so far, use TAG from the cut-off date - main-2024-02-09
+	var tag = "main-2024-02-09"
 	var suffix = constants.ImageNameNightlySuffix
 	// returns "quay.io/kiegroup/kogito-data-index-<persistence_layer>:<tag>"
 	return fmt.Sprintf("%s-%s-%s:%s", constants.ImageNamePrefix, constants.DataIndexName, persistenceName+suffix, tag)
@@ -257,8 +257,8 @@ func (j JobServiceHandler) GetContainerName() string {
 }
 
 func (j JobServiceHandler) GetServiceImageName(persistenceName string) string {
-	// Use latest nightly since we don't have a release upstream nor a prod version of Jobs Service
-	var tag = "latest"
+	// Use main-2024-02-09 nightly since we prod version of Jobs Service
+	var tag = "main-2024-02-09"
 	var suffix = constants.ImageNameNightlySuffix
 	// returns "quay.io/kiegroup/kogito-jobs-service-<persistece_layer>:<tag>"
 	return fmt.Sprintf("%s-%s-%s:%s", constants.ImageNamePrefix, constants.JobServiceName, persistenceName+suffix, tag)
