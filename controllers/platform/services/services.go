@@ -257,7 +257,7 @@ func (j JobServiceHandler) GetContainerName() string {
 }
 
 func (j JobServiceHandler) GetServiceImageName(persistenceName string) string {
-	// Use main-2024-02-09 nightly since we prod version of Jobs Service
+	// Use TAG from the cut-off date - main-2024-02-09 since we don't have prod version of Jobs Service
 	var tag = "main-2024-02-09"
 	var suffix = constants.ImageNameNightlySuffix
 	// returns "quay.io/kiegroup/kogito-jobs-service-<persistece_layer>:<tag>"
