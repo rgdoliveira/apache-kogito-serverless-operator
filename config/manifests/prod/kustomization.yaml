@@ -2,7 +2,7 @@
 # used to generate the 'manifests/' directory in a bundle.
 resources:
 - bases/logic-operator-rhel8.clusterserviceversion.yaml
-- ../../default/osl
+- ../../default/prod
 - ../../samples
 - ../../scorecard
 

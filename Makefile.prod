@@ -197,16 +197,16 @@ uninstall: manifests kustomize ## Uninstall CRDs from the K8s cluster specified 
 
 .PHONY: deploy
 deploy: manifests kustomize ## Deploy controller to the K8s cluster specified in ~/.kube/config.
-	cd config/manager/osl && $(KUSTOMIZE) edit set image controller=${IMG}
-	$(KUSTOMIZE) build config/default/osl | kubectl apply -f -
+	cd config/manager/prod && $(KUSTOMIZE) edit set image controller=${IMG}
+	$(KUSTOMIZE) build config/default/prod | kubectl apply -f -
 
 .PHONY: generate-deploy
 generate-deploy: manifests kustomize ## Deploy controller to the K8s cluster specified in ~/.kube/config.
-	cd config/manager/osl && $(KUSTOMIZE) edit set image controller=${IMG}
+	cd config/manager/prod && $(KUSTOMIZE) edit set image controller=${IMG}
 
 .PHONY: undeploy
 undeploy: ## Undeploy controller from the K8s cluster specified in ~/.kube/config. Call with ignore-not-found=true to ignore resource not found errors during deletion.
-	$(KUSTOMIZE) build config/default/osl | kubectl delete --ignore-not-found=$(ignore-not-found) -f -
+	$(KUSTOMIZE) build config/default/prod | kubectl delete --ignore-not-found=$(ignore-not-found) -f -
 
 ##@ Build Dependencies
 
@@ -242,10 +242,10 @@ $(ENVTEST): $(LOCALBIN)
 
 .PHONY: bundle
 bundle: manifests kustomize install-operator-sdk ## Generate bundle manifests and metadata, then validate generated files.
-	operator-sdk generate kustomize manifests --input-dir=./config/manifests/osl --output-dir=./config/manifests/osl --package=logic-operator-rhel8  -q
-	cd config/manager/osl && $(KUSTOMIZE) edit set image controller=$(IMG)
-	$(KUSTOMIZE) build config/manifests/osl | operator-sdk generate bundle $(BUNDLE_GEN_FLAGS) --package=logic-operator-rhel8 --output-dir=bundle.osl
-	operator-sdk bundle validate ./bundle.osl
+	operator-sdk generate kustomize manifests --input-dir=./config/manifests/prod --output-dir=./config/manifests/prod --package=logic-operator-rhel8  -q
+	cd config/manager/prod && $(KUSTOMIZE) edit set image controller=$(IMG)
+	$(KUSTOMIZE) build config/manifests/prod | operator-sdk generate bundle $(BUNDLE_GEN_FLAGS) --package=logic-operator-rhel8 --output-dir=bundle.prod
+	operator-sdk bundle validate ./bundle.prod
 
 .PHONY: bundle-build
 bundle-build: ## Build the bundle image.
