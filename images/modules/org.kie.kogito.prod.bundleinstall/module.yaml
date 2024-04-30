@@ -1,0 +1,14 @@
+name: org.kie.kogito.prod.bundleinstall
+version: "1.32.0"
+description: Copy the bund files to the target image
+
+artifacts:
+  - name: manifests
+    path: "../../../../../bundle.prod/manifests"
+    dest: /manifests/
+  - name: metadata
+    path: "../../../../../bundle.prod/metadata"
+    dest: /metadata/
+  - name: tests-scorecard
+    path: "../../../../../bundle.prod/tests/scorecard/"
+    dest: /tests/scorecard/
