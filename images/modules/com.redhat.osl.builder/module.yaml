@@ -1,4 +1,4 @@
-name: org.kie.kogito.prod.builder
+name: com.redhat.osl.builder
 version: "1.32.0"
 description: Builds the operator binary
 

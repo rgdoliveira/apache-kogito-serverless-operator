@@ -8,7 +8,7 @@
     repositories:
       - path: modules
     install:
-      - name: org.kie.kogito.prod.builder
+      - name: com.redhat.osl.builder
 
   osbs:
     configuration:
