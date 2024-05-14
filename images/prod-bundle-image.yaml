@@ -13,7 +13,7 @@
 # limitations under the License.
 
 schema_version: 1
-name: "openshift-serverless-1-tech-preview/logic-operator-bundle"
+name: "openshift-serverless-1/logic-operator-bundle"
 description: "OpenShift Serverless Logic Operator Bundle"
 version: "1.33.0"
 from: "scratch"

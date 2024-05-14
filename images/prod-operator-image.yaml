@@ -39,7 +39,7 @@
             - ppc64le
             - aarch64
 
-- name: "openshift-serverless-1-tech-preview/logic-rhel8-operator"
+- name: "openshift-serverless-1/logic-rhel8-operator"
   version: "1.33.0"
   from: "registry.access.redhat.com/ubi8/ubi-micro:latest"
   description: "Runtime Image for the Red Hat OpenShift Serverless Logic Operator"
