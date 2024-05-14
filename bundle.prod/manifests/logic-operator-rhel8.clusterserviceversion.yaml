@@ -113,7 +113,7 @@ metadata:
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
     repository: https://github.com/apache/incubator-kie-kogito-serverless-operator
     support: Red Hat
-  name: logic-operator-rhel8.v1.32.0
+  name: logic-operator-rhel8.v1.33.0
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -654,4 +654,4 @@ spec:
       name: kube-rbac-proxy
     - image: registry.redhat.io/openshift-serverless-1-tech-preview/logic-rhel8-operator@sha256:cdc81719192f2dfdf8a1d366cda54347462acba3425f48a61b29631f191284fa
       name: manager
-  version: 1.32.0
+  version: 1.33.0
