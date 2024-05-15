@@ -13,9 +13,9 @@
 # limitations under the License.
 
 schema_version: 1
-name: "openshift-serverless-1-tech-preview/logic-operator-bundle"
+name: "openshift-serverless-1/logic-operator-bundle"
 description: "OpenShift Serverless Logic Operator Bundle"
-version: "1.32.0"
+version: "1.33.0"
 from: "scratch"
 
 labels:
@@ -81,4 +81,4 @@ osbs:
   extra_dir: osbs-extra
   repository:
     name: containers/openshift-serverless-1-logic-operator-bundle
-    branch: openshift-serverless-1.32-rhel-8
+    branch: openshift-serverless-1.33-rhel-8
