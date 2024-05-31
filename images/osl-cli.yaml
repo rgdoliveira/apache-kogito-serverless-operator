@@ -51,20 +51,20 @@
       - name: com.redhat.osl.cli.artifacts
   run:
     user: 65532
-    
-packages:
-  manager: microdnf
-  content_sets_file: content_sets.yaml
 
-osbs:
-  configuration:
-    container:
-      platforms:
-        only:
-        - x86_64
-        - aarch64
-      compose:
-        pulp_repos: true
-  repository:
-    name: containers/openshift-serverless-1-logic-kn-workflow-cli-artifacts
-    branch: openshift-serverless-1.33-rhel-8    
+  packages:
+    manager: microdnf
+    content_sets_file: content_sets.yaml
+
+  osbs:
+    configuration:
+      container:
+        platforms:
+          only:
+          - x86_64
+          - aarch64
+        compose:
+          pulp_repos: true
+    repository:
+      name: containers/openshift-serverless-1-logic-kn-workflow-cli-artifacts
+      branch: openshift-serverless-1.33-rhel-8
