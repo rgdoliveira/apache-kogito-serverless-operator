@@ -33,4 +33,4 @@ tar --transform='flags=r;s|kn-workflow-linux-arm64|kn|' -zcf kn-workflow-linux-a
 tar --transform='flags=r;s|kn-workflow-darwin-amd64|kn|' -zcf kn-workflow-macos-amd64.tar.gz kn-workflow-darwin-amd64 LICENSE
 tar --transform='flags=r;s|kn-workflow-darwin-arm64|kn|' -zcf kn-workflow-macos-arm64.tar.gz kn-workflow-darwin-arm64 LICENSE
 
-mkdir "${KN_WORK_DIR}/windows" && mv kn-workflow-windows-amd64.exe "${KN_WORK_DIR}/windows/kn.exe" && cp LICENSE "${KN_WORK_DIR}/windows/" && zip --quiet --junk-path - "${KN_WORK_DIR}/windows/*" > kn-workflow-windows-amd64.zip
+mkdir "${KN_WORK_DIR}/windows" && mv kn-workflow-windows-amd64.exe "${KN_WORK_DIR}/windows/kn.exe" && cp LICENSE "${KN_WORK_DIR}/windows/" && zip -jrq kn-workflow-windows-amd64.zip "${KN_WORK_DIR}/windows"
