@@ -13,7 +13,7 @@
 # limitations under the License.
 
 name: "com.redhat.osl.cli.artifacts"
-version: "1.33.0-snapshot"
+version: "1.33.0"
 description: "Copy binaries from the packager image"
 
 execute:
@@ -25,18 +25,18 @@ artifacts:
     path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-linux-amd64.tar.gz
     dest: /usr/share/kn/linux_amd64/
   - image: packager
-    name: kn-workflow-linux-ppc64le
-    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-linux-ppc64le.tar.gz
-    dest: /usr/share/kn/linux_ppc64le/
-  - image: packager
-    name: kn-workflow-linux-s390x
-    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-linux-s390x.tar.gz
-    dest: /usr/share/kn/linux_s390x/
-  - image: packager
-    name: kn-workflow-macos-amd64
-    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-macos-amd64.tar.gz
-    dest: /usr/share/kn/macos/
+    name: kn-workflow-linux-arm64
+    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-linux-arm64.tar.gz
+    dest: /usr/share/kn/linux_arm64/
   - image: packager
     name: kn-workflow-windows-amd64
     path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-windows-amd64.zip
     dest: /usr/share/kn/windows/
+  - image: packager
+    name: kn-workflow-macos-amd64
+    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-macos-amd64.tar.gz
+    dest: /usr/share/kn/macos_amd64/
+  - image: packager
+    name: kn-workflow-macos-arm64
+    path: /opt/app-root/src/go/src/github.com/knative/client/kn-workflow-macos-arm64.tar.gz
+    dest: /usr/share/kn/macos_arm64/

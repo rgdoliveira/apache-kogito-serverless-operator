@@ -15,4 +15,4 @@
 
 set -e
 
-mkdir -p /usr/share/kn/{linux_amd64,linux_ppc64le,linux_s390x,macos,windows}
+mkdir -p /usr/share/kn/{linux_amd64,linux_arm64,macos_amd64,macos_arm64,windows}

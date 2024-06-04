@@ -18,19 +18,19 @@ set -e
 mkdir -p "${KN_WORK_DIR}"
 cd "${KN_WORK_DIR}"
 
-mv  "/tmp/LICENSE" .
+mv  "/tmp/artifacts/LICENSE" .
 
-wget -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/linux/kn-workflow-linux-amd64"
-wget -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/ppc64le/linux/kn-workflow-linux-ppc64le"
-wget -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/s390x/linux/kn-workflow-linux-s390x"
-wget -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/windows/kn-workflow-windows-amd64.exe"
-wget -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/macos/kn-workflow-darwin-amd64"
+wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/linux/kn-workflow-linux-amd64"
+wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/arm64/linux/kn-workflow-linux-arm64"
+wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/windows/kn-workflow-windows-amd64.exe"
+wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/macos/kn-workflow-darwin-amd64"
+wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/arm64/macos/kn-workflow-darwin-arm64"
 
-chmod +x kn-workflow-linux-amd64 kn-workflow-linux-ppc64le kn-workflow-linux-s390x kn-workflow-windows-amd64.exe kn-workflow-darwin-amd64
+chmod +x kn-workflow-linux-amd64 kn-workflow-linux-arm64 kn-workflow-windows-amd64.exe kn-workflow-darwin-amd64 kn-workflow-darwin-arm64
 
 tar --transform='flags=r;s|kn-workflow-linux-amd64|kn|' -zcf kn-workflow-linux-amd64.tar.gz kn-workflow-linux-amd64 LICENSE
-tar --transform='flags=r;s|kn-workflow-linux-ppc64le|kn|' -zcf kn-workflow-linux-ppc64le.tar.gz kn-workflow-linux-ppc64le LICENSE
-tar --transform='flags=r;s|kn-workflow-linux-s390x|kn|' -zcf kn-workflow-linux-s390x.tar.gz kn-workflow-linux-s390x LICENSE
+tar --transform='flags=r;s|kn-workflow-linux-arm64|kn|' -zcf kn-workflow-linux-arm64.tar.gz kn-workflow-linux-arm64 LICENSE
 tar --transform='flags=r;s|kn-workflow-darwin-amd64|kn|' -zcf kn-workflow-macos-amd64.tar.gz kn-workflow-darwin-amd64 LICENSE
+tar --transform='flags=r;s|kn-workflow-darwin-arm64|kn|' -zcf kn-workflow-macos-arm64.tar.gz kn-workflow-darwin-arm64 LICENSE
 
-mkdir "${KN_WORK_DIR}/windows" && mv kn-workflow-windows-amd64.exe "${KN_WORK_DIR}/windows/kn.exe" && cp LICENSE "${KN_WORK_DIR}/windows/" && zip --quiet --junk-path - "${KN_WORK_DIR}/windows/*" > kn-workflow-windows-amd64.zip
+mkdir "${KN_WORK_DIR}/windows" && mv kn-workflow-windows-amd64.exe "${KN_WORK_DIR}/windows/kn.exe" && cp LICENSE "${KN_WORK_DIR}/windows/" && zip -jrq kn-workflow-windows-amd64.zip "${KN_WORK_DIR}/windows"
