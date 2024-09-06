@@ -34,10 +34,10 @@ data:
     postgreSQLPersistenceExtensions:
       - groupId: io.quarkus
         artifactId: quarkus-jdbc-postgresql
-        version: 3.8.4.redhat-00002
+        version: 3.8.6.redhat-00003
       - groupId: io.quarkus
         artifactId: quarkus-agroal
-        version: 3.8.4.redhat-00002
+        version: 3.8.6.redhat-00003
       - groupId: org.kie
         artifactId: kie-addons-quarkus-persistence-jdbc
         version: 9.100.0.redhat-00004
