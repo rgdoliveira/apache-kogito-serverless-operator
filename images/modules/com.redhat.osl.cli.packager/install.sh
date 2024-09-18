@@ -15,10 +15,12 @@
 
 set -e
 
+SCRIPT_DIR=$(dirname "${0}")
+
 mkdir -p "${KN_WORK_DIR}"
 cd "${KN_WORK_DIR}"
 
-mv  "/tmp/artifacts/LICENSE" .
+cp -v "${SCRIPT_DIR}/added/LICENSE" .
 
 wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/amd64/linux/kn-workflow-linux-amd64"
 wget -q -P "${KN_WORK_DIR}" "${KN_ARTIFACT_URL}/arm64/linux/kn-workflow-linux-arm64"
