@@ -40,7 +40,7 @@ data:
         version: 3.8.6.redhat-00004
       - groupId: org.kie
         artifactId: kie-addons-quarkus-persistence-jdbc
-        version: 9.101.0.redhat-00004
+        version: 9.101.0.redhat-00007
 kind: ConfigMap
 metadata:
   name: logic-operator-rhel8-controllers-config
