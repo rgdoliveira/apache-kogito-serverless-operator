@@ -137,7 +137,7 @@ metadata:
     operators.operatorframework.io/project_layout: go.kubebuilder.io/v3
     repository: https://github.com/kiegroup/kogito-serverless-operator/
     support: Red Hat
-  name: logic-operator-rhel8.v1.34.0
+  name: logic-operator-rhel8.v1.35.0
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -890,5 +890,5 @@ spec:
   minKubeVersion: 1.23.0
   provider:
     name: Red Hat
-  replaces: logic-operator-rhel8.v1.33.0
-  version: 1.34.0
+  replaces: logic-operator-rhel8.v1.34.0
+  version: 1.35.0
